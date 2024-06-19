@@ -55,12 +55,20 @@ fun Application.configureStaticHtml(
   }
 }
 
+//fun Application.configureRouting(
+//  vararg routesCallbacks: Routing.() -> Unit = emptyArray()
+//) {
+//  if (routesCallbacks.isNotEmpty()) {
+//    routing {
+//      routesCallbacks.forEach { it() }
+//    }
+//  }
+//}
+
 fun Application.configureRouting(
-  vararg routesCallbacks: Routing.() -> Unit = emptyArray()
+  routingCallback: Routing.() -> Unit = {}
 ) {
-  if (routesCallbacks.isNotEmpty()) {
-    routing {
-      routesCallbacks.forEach { it() }
-    }
+  routing {
+    routingCallback()
   }
 }
