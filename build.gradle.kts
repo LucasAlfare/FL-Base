@@ -49,6 +49,12 @@ dependencies {
 
   // HikariCP (ConnectionPool)
   implementation("com.zaxxer:HikariCP:5.1.0")
+
+  testImplementation("org.jetbrains.kotlin:kotlin-test")
+}
+
+tasks.test {
+  useJUnitPlatform()
 }
 
 kotlin {
