@@ -21,7 +21,7 @@ object ServerSetup {
 
   fun startWebServer(
     port: Int = 3000,
-    vararg setupCallbacks: () -> Unit = emptyArray()
+    vararg setupCallbacks: Application.() -> Unit = emptyArray()
   ) {
     embeddedServer(
       factory = Netty,
