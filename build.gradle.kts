@@ -1,6 +1,7 @@
 @file:Suppress("PropertyName", "SpellCheckingInspection")
 
 val ktor_version: String by project
+val exposed_version: String by project
 
 plugins {
   kotlin("jvm") version "2.0.0"
@@ -31,8 +32,9 @@ dependencies {
   // Cryptography
   api("org.mindrot:jbcrypt:0.4")
 
-  // SQL Framework Exposed
-  api("org.jetbrains.exposed:exposed-core:0.48.0")
+  // SQL Framework Exposed Core and JDBC transport layer
+  api("org.jetbrains.exposed:exposed-core:$exposed_version")
+  api("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
 
   /*
   // SQLite dependencies
