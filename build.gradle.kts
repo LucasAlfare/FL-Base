@@ -50,6 +50,8 @@ dependencies {
   // HikariCP (ConnectionPool)
   api("com.zaxxer:HikariCP:5.1.0")
 
+  implementation("ch.qos.logback:logback-classic:1.5.3")
+
   testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
