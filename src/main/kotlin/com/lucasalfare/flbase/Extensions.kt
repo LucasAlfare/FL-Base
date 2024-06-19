@@ -44,19 +44,23 @@ fun Application.configureSerialization() {
 }
 
 fun Application.configureStaticHtml(
-  vararg pathAndIndex: Pair<String, String>
+  vararg pathAndIndex: Pair<String, String> = emptyArray()
 ) {
-  routing {
-    pathAndIndex.forEach {
-      staticResources(remotePath = it.first, basePackage = "assets", index = it.second)
+  if (pathAndIndex.isNotEmpty()) {
+    routing {
+      pathAndIndex.forEach {
+        staticResources(remotePath = it.first, basePackage = "assets", index = it.second)
+      }
     }
   }
 }
 
 fun Application.configureRouting(
-  vararg routesCallbacks: () -> Unit = emptyArray()
+  vararg routesCallbacks: Route.() -> Unit = emptyArray()
 ) {
-  routing {
-    routesCallbacks.forEach { it() }
+  if (routesCallbacks.isNotEmpty()) {
+    routing {
+      routesCallbacks.forEach { it() }
+    }
   }
 }
