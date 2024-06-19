@@ -56,7 +56,7 @@ fun Application.configureStaticHtml(
 }
 
 fun Application.configureRouting(
-  vararg routesCallbacks: Route.() -> Unit = emptyArray()
+  vararg routesCallbacks: Routing.() -> Unit = emptyArray()
 ) {
   if (routesCallbacks.isNotEmpty()) {
     routing {
