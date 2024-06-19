@@ -1,4 +1,4 @@
-package com.lucasalfare.flbase.main
+package com.lucasalfare.flbase
 
 import io.ktor.http.*
 

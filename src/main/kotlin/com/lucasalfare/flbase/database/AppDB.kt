@@ -1,8 +1,8 @@
 @file:Suppress("MemberVisibilityCanBePrivate")
 
-package com.lucasalfare.flbase.main.database
+package com.lucasalfare.flbase.database
 
-import com.lucasalfare.flbase.main.Constants
+import com.lucasalfare.flbase.Constants
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import com.zaxxer.hikari.util.IsolationLevel

@@ -1,6 +1,6 @@
-package com.lucasalfare.flbase.main
+package com.lucasalfare.flbase
 
-import com.lucasalfare.flbase.main.database.AppDB
+import com.lucasalfare.flbase.database.AppDB
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
