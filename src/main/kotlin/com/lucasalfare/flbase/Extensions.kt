@@ -19,36 +19,21 @@ import kotlinx.serialization.json.Json
  * and custom messages.
  */
 fun Application.configureStatusPages() {
-  val t = this
+  val applicationRef = this
   install(StatusPages) {
-    exception<AppError> { call, cause ->
-      when (cause) {
-        is UnavailableDatabaseService -> {
-          t.log.error("Database service unavailable: ${cause.customMessage}")
+    exception<Throwable> { call, cause ->
+      when (val root = cause.myRootCause()) {
+        is AppError -> {
+          applicationRef.log.error("Caught root AppError in server -> $root: ${root.customMessage}")
           call.respond(
-            cause.status,
-            cause.customMessage ?: "UnavailableDatabaseService"
+            status = root.status,
+            message = root.customMessage ?: root.javaClass.name
           )
         }
 
-        is BadRequest -> {
-          t.log.error("Bad request: ${cause.customMessage}")
-          call.respond(cause.status, cause.customMessage ?: "BadRequest")
-        }
-
-        is SerializationError -> {
-          t.log.error("Serialization error: ${cause.customMessage}")
-          call.respond(cause.status, cause.customMessage ?: "SerializationError")
-        }
-
-        is ValidationError -> {
-          t.log.error("Validation error: ${cause.customMessage}")
-          call.respond(cause.status, cause.customMessage ?: "ValidationError")
-        }
-
         else -> {
-          t.log.error("Unexpected error: ${cause.customMessage}")
-          call.respond(cause.status, cause.customMessage ?: "InternalServerError")
+          applicationRef.log.error("Unexpected type of error: ${cause.message}")
+          call.respond(HttpStatusCode.InternalServerError, cause.message ?: "InternalServerError")
         }
       }
     }
@@ -112,4 +97,14 @@ fun Application.configureRouting(
   routing {
     routingCallback()
   }
+}
+
+/**
+ * Custom function to get root [Throwable] cause.
+ *
+ * This is used in order to not use the same function of the Ktor API due to it
+ * be marked with [@InternalApi].
+ */
+fun Throwable.myRootCause(): Throwable {
+  return if (cause == null) this else cause!!.myRootCause()
 }
