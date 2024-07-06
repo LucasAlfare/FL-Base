@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.lucasalfare.flbase
 
 import io.ktor.server.application.*

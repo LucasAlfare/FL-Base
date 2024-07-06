@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.lucasalfare.flbase.database
 
 import com.lucasalfare.flbase.Constants
