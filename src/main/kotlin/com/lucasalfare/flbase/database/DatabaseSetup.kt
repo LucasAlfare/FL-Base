@@ -24,10 +24,12 @@ import org.jetbrains.exposed.sql.transactions.transaction
 fun initDatabase(
   vararg tables: Table,
   dropTablesOnStart: Boolean = false
-) {
+): String {
+  val targetDriverClassName = System.getenv("DB_JDBC_DRIVER") ?: Constants.SQLITE_DRIVER
+
   AppDB.initialize(
     jdbcUrl = System.getenv("DB_JDBC_URL") ?: Constants.SQLITE_URL,
-    jdbcDriverClassName = System.getenv("DB_JDBC_DRIVER") ?: Constants.SQLITE_DRIVER,
+    jdbcDriverClassName = targetDriverClassName,
     username = System.getenv("DB_USERNAME") ?: "",
     password = System.getenv("DB_PASSWORD") ?: "",
     maximumPoolSize = (System.getenv("DB_POOL_SIZE")?.toInt()) ?: Constants.DEFAULT_MAXIMUM_POOL_SIZE
@@ -37,4 +39,6 @@ fun initDatabase(
       transaction(AppDB.DB) { SchemaUtils.createMissingTablesAndColumns(it) }
     }
   }
+
+  return targetDriverClassName
 }
