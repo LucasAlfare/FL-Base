@@ -60,3 +60,13 @@ class ValidationError(
   customMessage: String = "Error in validation of fields.",
   status: HttpStatusCode = HttpStatusCode.BadRequest
 ) : AppError(customMessage, status)
+
+class NullEnvironmentVariable(
+  customMessage: String = "Missing an environment variable in server (null)",
+  status: HttpStatusCode = HttpStatusCode.InternalServerError
+) : AppError(customMessage, status)
+
+class EmptyEnvironmentVariable(
+  customMessage: String = "Missing an environment variable in server (empty)",
+  status: HttpStatusCode = HttpStatusCode.InternalServerError
+) : AppError(customMessage, status)

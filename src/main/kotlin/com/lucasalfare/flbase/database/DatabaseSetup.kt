@@ -32,11 +32,11 @@ fun initDatabase(
   dropTablesOnStart: Boolean = false
 ) {
   AppDB.initialize(
-    jdbcUrl = databaseUrl.toString(),
-    jdbcDriverClassName = driverClassName.toString(),
-    username = databaseUsername.toString(),
-    password = databasePassword.toString(),
-    maximumPoolSize = databasePoolSize.toString().toInt()
+    jdbcUrl = databaseUrl,
+    jdbcDriverClassName = driverClassName,
+    username = databaseUsername,
+    password = databasePassword,
+    maximumPoolSize = databasePoolSize.toInt()
   ) {
     tables.forEach {
       if (dropTablesOnStart) SchemaUtils.drop(it)
