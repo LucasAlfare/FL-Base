@@ -2,7 +2,11 @@
 
 package com.lucasalfare.flbase.database
 
-import com.lucasalfare.flbase.Constants
+import com.lucasalfare.flbase.EnvsLoader.databasePassword
+import com.lucasalfare.flbase.EnvsLoader.databasePoolSize
+import com.lucasalfare.flbase.EnvsLoader.databaseUrl
+import com.lucasalfare.flbase.EnvsLoader.databaseUsername
+import com.lucasalfare.flbase.EnvsLoader.driverClassName
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -26,21 +30,17 @@ import org.jetbrains.exposed.sql.transactions.transaction
 fun initDatabase(
   vararg tables: Table,
   dropTablesOnStart: Boolean = false
-): String {
-  val targetDriverClassName = System.getenv("DB_JDBC_DRIVER") ?: Constants.SQLITE_DRIVER
-
+) {
   AppDB.initialize(
-    jdbcUrl = System.getenv("DB_JDBC_URL") ?: Constants.SQLITE_URL,
-    jdbcDriverClassName = targetDriverClassName,
-    username = System.getenv("DB_USERNAME") ?: "",
-    password = System.getenv("DB_PASSWORD") ?: "",
-    maximumPoolSize = (System.getenv("DB_POOL_SIZE")?.toInt()) ?: Constants.DEFAULT_MAXIMUM_POOL_SIZE
+    jdbcUrl = databaseUrl.toString(),
+    jdbcDriverClassName = driverClassName.toString(),
+    username = databaseUsername.toString(),
+    password = databasePassword.toString(),
+    maximumPoolSize = databasePoolSize.toString().toInt()
   ) {
     tables.forEach {
       if (dropTablesOnStart) SchemaUtils.drop(it)
       transaction(AppDB.DB) { SchemaUtils.createMissingTablesAndColumns(it) }
     }
   }
-
-  return targetDriverClassName
 }
