@@ -2,6 +2,7 @@
 
 package com.lucasalfare.flbase
 
+import com.lucasalfare.flbase.EnvsLoader.webServerPort
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -28,7 +29,7 @@ import io.ktor.server.netty.*
  * ```
  */
 fun startWebServer(
-  port: Int = 3000,
+  port: Int = webServerPort.toInt(),
   setupCallback: Application.() -> Unit = {}
 ) {
   embeddedServer(factory = Netty, port = port) {

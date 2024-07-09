@@ -37,6 +37,11 @@ object EnvsLoader {
     Constants.DEFAULT_MAXIMUM_POOL_SIZE.toString(),
     Constants.DEFAULT_MAXIMUM_POOL_SIZE.toString()
   ).toString()
+  internal val webServerPort = EnvValue(
+    "WEB_SERVER_PORT",
+    Constants.DEFAULT_WEB_SERVER_PORT.toString(),
+    Constants.DEFAULT_WEB_SERVER_PORT.toString()
+  ).toString()
 
   fun customLoad(
     name: String,

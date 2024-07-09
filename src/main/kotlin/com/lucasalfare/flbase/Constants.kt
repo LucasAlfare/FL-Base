@@ -26,5 +26,7 @@ class Constants {
      * This is used if none is manually defined.
      */
     const val DEFAULT_MAXIMUM_POOL_SIZE = 6
+
+    const val DEFAULT_WEB_SERVER_PORT = 80
   }
 }
