@@ -1,11 +1,8 @@
 @file:Suppress("PropertyName", "SpellCheckingInspection")
 
-val ktor_version: String by project
-val exposed_version: String by project
-
 plugins {
-  kotlin("jvm") version "2.0.0"
-  id("org.jetbrains.kotlin.plugin.serialization") version "2.0.0"
+  alias(libs.plugins.kotlin.jvm)
+  alias(libs.plugins.kotlin.serialization)
 }
 
 group = "com.lucasalfare.flbase"
@@ -16,45 +13,33 @@ repositories {
 }
 
 dependencies {
-  // Ktor (base and engine)
-  api("io.ktor:ktor-server-core:$ktor_version")
-  api("io.ktor:ktor-server-netty:$ktor_version")
-
-  // Serialization
-  api("io.ktor:ktor-server-content-negotiation:$ktor_version")
-  api("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
-
-  // CORS...
-  api("io.ktor:ktor-server-cors:$ktor_version")
-
-  // StatusPages plugin
-  api("io.ktor:ktor-server-status-pages:$ktor_version")
+  // Ktor
+  api(libs.ktor.core)
+  api(libs.ktor.netty)
+  api(libs.ktor.content.negotiation)
+  api(libs.ktor.serialization)
+  api(libs.ktor.cors)
+  api(libs.ktor.status.pages)
 
   // Cryptography
-  api("org.mindrot:jbcrypt:0.4")
+  api(libs.bcrypt)
 
-  // SQL Framework Exposed Core and JDBC transport layer
-  api("org.jetbrains.exposed:exposed-core:$exposed_version")
-  api("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
+  // Exposed (SQL Framework)
+  api(libs.exposed.core)
+  api(libs.exposed.jdbc)
 
-  /*
-  // SQLite dependencies
-  Database.connect("jdbc:sqlite:/data/data.db", "org.sqlite.JDBC")
-  TransactionManager
-    .manager
-    .defaultIsolationLevel = Connection
-      .TRANSACTION_SERIALIZABLE
-   */
-  api("org.xerial:sqlite-jdbc:3.45.2.0")
+  // Database Drivers
+  api(libs.sqlite)
+  api(libs.postgres)
 
-  // Postgres dependency
-  api("org.postgresql:postgresql:42.7.3")
+  // HikariCP (Connection Pool)
+  api(libs.hikaricp)
 
-  // HikariCP (ConnectionPool)
-  api("com.zaxxer:HikariCP:5.1.0")
+  // Logging
+  api(libs.logback)
 
-  api("ch.qos.logback:logback-classic:1.5.3")
-  testImplementation("org.jetbrains.kotlin:kotlin-test")
+  // Test
+  testImplementation(libs.kotlin.test)
 }
 
 tasks.test {
@@ -62,5 +47,5 @@ tasks.test {
 }
 
 kotlin {
-  jvmToolchain(17)
+  jvmToolchain(21)
 }
