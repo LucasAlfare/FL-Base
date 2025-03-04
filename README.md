@@ -7,7 +7,6 @@ We are using [Ktor](https://github.com/ktorio/ktor) as the web server and [Expos
 
 # How to use
 
-How to Use
 The most convenient way to use this project as a base dependency for other projects is by utilizing the Gradle Sources Dependency feature. This feature allows you to pull other Gradle projects from a Git repository (e.g., GitHub remote) and build them as local dependencies for another repository.
 
 To do this, you need to modify your `settings.gradle.kts` (global Gradle settings script) and the targeted module's `build.gradle.kts` configuration script by adding the following code:
