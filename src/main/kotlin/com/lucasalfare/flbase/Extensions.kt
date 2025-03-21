@@ -64,7 +64,10 @@ fun Application.configureCORS() {
  */
 fun Application.configureSerialization() {
   install(ContentNegotiation) {
-    json(Json { isLenient = false })
+    json(Json {
+      isLenient = false
+      ignoreUnknownKeys = true
+    })
   }
 }
 
