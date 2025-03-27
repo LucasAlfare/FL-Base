@@ -13,13 +13,17 @@ repositories {
 }
 
 dependencies {
-  // Ktor
-  api(libs.ktor.core)
-  api(libs.ktor.netty)
-  api(libs.ktor.content.negotiation)
-  api(libs.ktor.serialization)
-  api(libs.ktor.cors)
-  api(libs.ktor.status.pages)
+  // Ktor Server
+  api(libs.ktor.server.core)
+  api(libs.ktor.server.netty)
+  api(libs.ktor.server.content.negotiation)
+  api(libs.ktor.server.serialization)
+  api(libs.ktor.server.cors)
+  api(libs.ktor.server.status.pages)
+
+  // Quick Ktor Client
+  api(libs.ktor.client.core)
+  api(libs.ktor.client.cio)
 
   // Cryptography
   api(libs.bcrypt)
