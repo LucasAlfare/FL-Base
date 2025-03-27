@@ -24,6 +24,7 @@ dependencies {
   // Quick Ktor Client
   api(libs.ktor.client.core)
   api(libs.ktor.client.cio)
+  api(libs.ktor.client.content.negotiation)
 
   // Cryptography
   api(libs.bcrypt)
