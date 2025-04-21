@@ -3,6 +3,7 @@
 plugins {
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.kotlin.serialization)
+  `maven-publish`
 }
 
 group = "com.lucasalfare.flbase"
@@ -53,4 +54,15 @@ tasks.test {
 
 kotlin {
   jvmToolchain(21)
+}
+
+/**
+ * Helper block to configure Maven Publishing.
+ */
+publishing {
+  publications {
+    create<MavenPublication>("Maven") {
+      from(components["kotlin"])
+    }
+  }
 }
