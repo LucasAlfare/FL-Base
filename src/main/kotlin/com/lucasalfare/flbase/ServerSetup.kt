@@ -10,15 +10,19 @@ import io.ktor.server.netty.*
 /**
  * Starts a web server using the Netty engine.
  *
- * This function creates and starts an embedded web server on the specified port,
- * applying any additional setup defined in the provided callback.
+ * This function creates and starts an embedded HTTP server using the [Netty] engine,
+ * listening on the specified port. It leverages Ktor's [embeddedServer] function, which
+ * handles the server infrastructure, installs plugins, and manages the application lifecycle.
  *
- * @param port The port number on which the server will listen. The default is `3000`.
- * @param setupCallback A lambda function to define custom setup logic for the server application.
+ * The [setupCallback] parameter allows configuring the application behavior—such as routes,
+ * middlewares, serialization, status pages, etc.—by providing a lambda with [Application] as receiver.
  *
- * @example
- * ```
- * // Example usage to start the server with a custom setup
+ * Calling `.start(true)` launches the server in blocking mode, which keeps the main thread active
+ * until the server is shut down manually.
+ *
+ * - Example:
+ * ```kotlin
+ * // Example usage with custom routing
  * startWebServer(port = 8080) {
  *     configureRouting {
  *         get("/") {
@@ -27,6 +31,11 @@ import io.ktor.server.netty.*
  *     }
  * }
  * ```
+ *
+ * @param port The port the server will listen on. Defaults to the value of `webServerPort`
+ *             from the environment loader [EnvsLoader].
+ * @param setupCallback A lambda with [Application] receiver to configure server behavior
+ *                      (e.g., routes, status pages, CORS).
  */
 fun startWebServer(
   port: Int = webServerPort.toInt(),

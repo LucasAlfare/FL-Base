@@ -16,9 +16,15 @@ import kotlinx.serialization.json.Json
 /**
  * Configures status pages for handling exceptions in the application.
  *
- * This function installs the `StatusPages` feature and defines exception handlers
- * for various types of `AppError` subclasses, responding with appropriate HTTP status codes
- * and custom messages.
+ * This function installs the [StatusPages] plugin, which intercepts unhandled exceptions during
+ * HTTP request processing. It inspects the root cause of the exception using [myRootCause], and:
+ *
+ * - If it’s an instance of [AppError], it logs the error and returns an HTTP response with
+ *   the status and custom message defined by the exception.
+ * - If it’s any other type of exception, it logs it as unexpected and returns
+ *   [HttpStatusCode.InternalServerError] with the message.
+ *
+ * This setup ensures consistent error handling and user-friendly responses for known error types.
  */
 fun Application.configureStatusPages() {
   val applicationRef = this
@@ -45,8 +51,14 @@ fun Application.configureStatusPages() {
 /**
  * Configures Cross-Origin Resource Sharing (CORS) for the application.
  *
- * This function installs the `CORS` feature, allowing requests from any host
- * and enabling specific headers and methods.
+ * This function installs the [CORS] plugin, which defines the rules for allowing cross-origin HTTP requests.
+ * It configures the server to:
+ *
+ * - Accept requests from any host using [anyHost]
+ * - Allow the `Content-Type` header in requests
+ * - Allow the HTTP DELETE method explicitly
+ *
+ * This is useful when building APIs or frontend-backend systems that operate on different domains.
  */
 fun Application.configureCORS() {
   install(CORS) {
@@ -57,10 +69,16 @@ fun Application.configureCORS() {
 }
 
 /**
- * Configures content negotiation for serialization and deserialization of JSON.
+ * Configures content negotiation for JSON serialization and deserialization.
  *
- * This function installs the `ContentNegotiation` feature with JSON support,
- * setting the leniency to `false`.
+ * This function installs the [ContentNegotiation] plugin with [kotlinx.serialization.json.Json] as the format.
+ * It sets the behavior of the JSON parser as follows:
+ *
+ * - `isLenient = false`: Disables lenient parsing, ensuring strict compliance with JSON format.
+ * - `ignoreUnknownKeys = true`: Allows incoming JSON to contain unknown fields without throwing errors.
+ *
+ * This configuration ensures that the server communicates using well-structured JSON,
+ * while remaining tolerant to extra fields from clients.
  */
 fun Application.configureSerialization() {
   install(ContentNegotiation) {
@@ -72,11 +90,16 @@ fun Application.configureSerialization() {
 }
 
 /**
- * Configures static HTML serving for specified paths and index files.
+ * Configures static HTML serving for specified routes.
  *
- * @param pathAndIndex A vararg parameter of pairs, where each pair consists of a remote path
- *                     and the corresponding index file. The function sets up routing to serve
- *                     static resources from the specified paths.
+ * This function defines static routes using the [staticResources] block. It uses `assets` as the base resource path.
+ *
+ * @param pathAndIndex A list of pairs where:
+ * - The first value is the public route path.
+ * - The second is the name of the default index file to serve in that path (e.g. "index.html").
+ *
+ * For example, passing `"/docs" to "index.html"` means that visiting `/docs` in the browser will
+ * serve `/assets/index.html` from the application's resources.
  */
 fun Application.configureStaticHtml(
   vararg pathAndIndex: Pair<String, String> = emptyArray()
@@ -91,10 +114,19 @@ fun Application.configureStaticHtml(
 }
 
 /**
- * Configures routing for the application.
+ * Configures routing for the application by applying the user-defined callback.
  *
- * @param routingCallback A lambda function to define custom routing logic.
- *                        This function sets up the routing using the provided callback.
+ * This function calls [routing] and applies the provided [routingCallback] to define routes.
+ * It acts as a wrapper to organize route logic in a cleaner and more modular way.
+ *
+ * @param routingCallback A lambda with a [Routing] receiver where routes are defined.
+ *
+ * @example
+ * ```
+ * configureRouting {
+ *   get("/") { call.respondText("Hello, world!") }
+ * }
+ * ```
  */
 fun Application.configureRouting(
   routingCallback: Routing.() -> Unit = {}
@@ -105,10 +137,14 @@ fun Application.configureRouting(
 }
 
 /**
- * Custom function to get root [Throwable] cause.
+ * Recursively finds the root cause of a [Throwable].
  *
- * This is used in order to not use the same function of the Ktor API due to it
- * be marked with [@InternalApi].
+ * This function works similarly to Ktor’s internal `rootCause`, but avoids using Ktor’s
+ * `@InternalAPI`-annotated version to ensure future compatibility.
+ *
+ * It recursively follows the `cause` chain until it finds the original exception.
+ *
+ * @return The deepest [Throwable] in the cause chain.
  */
 fun Throwable.myRootCause(): Throwable {
   return if (cause == null) this else cause!!.myRootCause()
