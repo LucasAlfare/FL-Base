@@ -1,0 +1,50 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.lucasalfare.flbase.database////PointingToDeclaration/-f-l--base/com.lucasalfare.flbase.database/index.html
+$dokka.location:com.lucasalfare.flbase.database//initDatabase/#kotlin.Array[org.jetbrains.exposed.sql.Table]#kotlin.Boolean/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase.database/init-database.html
+$dokka.location:com.lucasalfare.flbase.database/AppDB///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase.database/-app-d-b/index.html
+$dokka.location:com.lucasalfare.flbase.database/AppDB/DB/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase.database/-app-d-b/-d-b.html
+$dokka.location:com.lucasalfare.flbase.database/AppDB/exposedQuery/#kotlin.coroutines.SuspendFunction0[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase.database/-app-d-b/exposed-query.html
+$dokka.location:com.lucasalfare.flbase.database/AppDB/initialize/#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.Int#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase.database/-app-d-b/initialize.html
+$dokka.location:com.lucasalfare.flbase////PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/index.html
+$dokka.location:com.lucasalfare.flbase//configureCORS/io.ktor.server.application.Application#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/configure-c-o-r-s.html
+$dokka.location:com.lucasalfare.flbase//configureRouting/io.ktor.server.application.Application#kotlin.Function1[io.ktor.server.routing.Routing,kotlin.Unit]/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/configure-routing.html
+$dokka.location:com.lucasalfare.flbase//configureSerialization/io.ktor.server.application.Application#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/configure-serialization.html
+$dokka.location:com.lucasalfare.flbase//configureStaticHtml/io.ktor.server.application.Application#kotlin.Array[kotlin.Pair[kotlin.String,kotlin.String]]/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/configure-static-html.html
+$dokka.location:com.lucasalfare.flbase//configureStatusPages/io.ktor.server.application.Application#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/configure-status-pages.html
+$dokka.location:com.lucasalfare.flbase//myRootCause/kotlin.Throwable#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/my-root-cause.html
+$dokka.location:com.lucasalfare.flbase//startWebServer/#kotlin.Int#kotlin.Function1[io.ktor.server.application.Application,kotlin.Unit]/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/start-web-server.html
+$dokka.location:com.lucasalfare.flbase/AppError///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-app-error/index.html
+$dokka.location:com.lucasalfare.flbase/AppError/AppError/#kotlin.String?#io.ktor.http.HttpStatusCode/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-app-error/-app-error.html
+$dokka.location:com.lucasalfare.flbase/AppError/customMessage/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-app-error/custom-message.html
+$dokka.location:com.lucasalfare.flbase/AppError/status/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-app-error/status.html
+$dokka.location:com.lucasalfare.flbase/AppResult///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-app-result/index.html
+$dokka.location:com.lucasalfare.flbase/AppResult/AppResult/#TypeParam(bounds=[kotlin.Any?])#io.ktor.http.HttpStatusCode/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-app-result/-app-result.html
+$dokka.location:com.lucasalfare.flbase/AppResult/data/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-app-result/data.html
+$dokka.location:com.lucasalfare.flbase/AppResult/statusCode/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-app-result/status-code.html
+$dokka.location:com.lucasalfare.flbase/BadRequest///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-bad-request/index.html
+$dokka.location:com.lucasalfare.flbase/BadRequest/BadRequest/#kotlin.String#io.ktor.http.HttpStatusCode/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-bad-request/-bad-request.html
+$dokka.location:com.lucasalfare.flbase/Constants.Companion///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-constants/-companion/index.html
+$dokka.location:com.lucasalfare.flbase/Constants.Companion/DEFAULT_MAXIMUM_POOL_SIZE/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-constants/-companion/-d-e-f-a-u-l-t_-m-a-x-i-m-u-m_-p-o-o-l_-s-i-z-e.html
+$dokka.location:com.lucasalfare.flbase/Constants.Companion/DEFAULT_WEB_SERVER_PORT/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-constants/-companion/-d-e-f-a-u-l-t_-w-e-b_-s-e-r-v-e-r_-p-o-r-t.html
+$dokka.location:com.lucasalfare.flbase/Constants.Companion/SQLITE_DRIVER/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-constants/-companion/-s-q-l-i-t-e_-d-r-i-v-e-r.html
+$dokka.location:com.lucasalfare.flbase/Constants.Companion/SQLITE_URL/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-constants/-companion/-s-q-l-i-t-e_-u-r-l.html
+$dokka.location:com.lucasalfare.flbase/Constants///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-constants/index.html
+$dokka.location:com.lucasalfare.flbase/Constants/Constants/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-constants/-constants.html
+$dokka.location:com.lucasalfare.flbase/EmptyEnvironmentVariable///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-empty-environment-variable/index.html
+$dokka.location:com.lucasalfare.flbase/EmptyEnvironmentVariable/EmptyEnvironmentVariable/#kotlin.String#io.ktor.http.HttpStatusCode/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-empty-environment-variable/-empty-environment-variable.html
+$dokka.location:com.lucasalfare.flbase/EnvValue///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-env-value/index.html
+$dokka.location:com.lucasalfare.flbase/EnvValue/EnvValue/#kotlin.String#kotlin.String#kotlin.String#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-env-value/-env-value.html
+$dokka.location:com.lucasalfare.flbase/EnvValue/toString/#/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-env-value/to-string.html
+$dokka.location:com.lucasalfare.flbase/EnvsLoader///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-envs-loader/index.html
+$dokka.location:com.lucasalfare.flbase/EnvsLoader/customLoad/#kotlin.String#kotlin.String#kotlin.String#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-envs-loader/custom-load.html
+$dokka.location:com.lucasalfare.flbase/NullEnvironmentVariable///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-null-environment-variable/index.html
+$dokka.location:com.lucasalfare.flbase/NullEnvironmentVariable/NullEnvironmentVariable/#kotlin.String#io.ktor.http.HttpStatusCode/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-null-environment-variable/-null-environment-variable.html
+$dokka.location:com.lucasalfare.flbase/SerializationError///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-serialization-error/index.html
+$dokka.location:com.lucasalfare.flbase/SerializationError/SerializationError/#kotlin.String#io.ktor.http.HttpStatusCode/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-serialization-error/-serialization-error.html
+$dokka.location:com.lucasalfare.flbase/UnavailableDatabaseService///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-unavailable-database-service/index.html
+$dokka.location:com.lucasalfare.flbase/UnavailableDatabaseService/UnavailableDatabaseService/#kotlin.String#io.ktor.http.HttpStatusCode/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-unavailable-database-service/-unavailable-database-service.html
+$dokka.location:com.lucasalfare.flbase/ValidationError///PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-validation-error/index.html
+$dokka.location:com.lucasalfare.flbase/ValidationError/ValidationError/#kotlin.String#io.ktor.http.HttpStatusCode/PointingToDeclaration/-f-l--base/com.lucasalfare.flbase/-validation-error/-validation-error.html
+com.lucasalfare.flbase
+com.lucasalfare.flbase.database
