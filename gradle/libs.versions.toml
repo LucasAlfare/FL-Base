@@ -2,6 +2,7 @@
 kotlin = "2.1.20"
 ktor = "3.1.2"
 exposed = "0.60.0"
+h2 = "2.2.224"
 sqlite = "3.49.1.0"
 postgres = "42.7.5"
 hikaricp = "6.2.1"
@@ -27,8 +28,11 @@ ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negoti
 bcrypt = { module = "org.mindrot:jbcrypt", version = "0.4" } # version basically "never" changes
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+
+h2 = { module = "com.h2database:h2", version.ref = "h2"}
 sqlite = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlite" }
 postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
+
 hikaricp = { module = "com.zaxxer:HikariCP", version.ref = "hikaricp" }
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test" }

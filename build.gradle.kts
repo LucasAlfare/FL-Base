@@ -36,6 +36,7 @@ dependencies {
   api(libs.exposed.jdbc)
 
   // Database Drivers
+  api(libs.h2)
   api(libs.sqlite)
   api(libs.postgres)
 
