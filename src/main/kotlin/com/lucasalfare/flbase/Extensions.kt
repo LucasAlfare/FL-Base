@@ -59,7 +59,7 @@ fun Application.configureStatusPages() {
  * This function installs the [CORS] plugin, which defines the rules for allowing cross-origin HTTP requests.
  * It configures the server to:
  *
- * - Accept requests from any host using [anyHost]
+ * - Accept requests from any host using [anyHost()] function
  * - Allow the `Content-Type` header in requests
  * - Allow the HTTP DELETE method explicitly
  *
