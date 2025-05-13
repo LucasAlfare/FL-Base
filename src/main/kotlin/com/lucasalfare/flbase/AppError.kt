@@ -17,7 +17,8 @@ import io.ktor.http.*
  */
 open class AppError(
   val customMessage: String?,
-  val status: HttpStatusCode = HttpStatusCode.InternalServerError
+  val status: HttpStatusCode = HttpStatusCode.InternalServerError,
+  val parent: Throwable? = null
 ) : Throwable()
 
 /**

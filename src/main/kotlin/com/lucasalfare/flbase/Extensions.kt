@@ -33,6 +33,11 @@ fun Application.configureStatusPages() {
       when (val root = cause.myRootCause()) {
         is AppError -> {
           applicationRef.log.error("Caught root AppError in server -> $root: ${root.customMessage}")
+
+          if (root.parent != null) {
+            applicationRef.log.error("AppError parent throwable -> ${root.parent}: ${root.parent.message}")
+          }
+
           call.respond(
             status = root.status,
             message = "$root: ${root.customMessage}"
