@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.lucasalfare.flbase"
-version = "1.1.1"
+version = "1.1.2"
 
 repositories {
   mavenCentral()
@@ -45,6 +45,8 @@ dependencies {
 
   // Logging
   api(libs.logback)
+
+  testApi(libs.ktor.server.test.host)
 
   // Test
   testImplementation(libs.kotlin.test)
