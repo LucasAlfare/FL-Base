@@ -159,7 +159,7 @@ fun Application.configureJwtAuth(
     jwt {
       verifier(verifier = JwtGenerator.verifier)
       validate { jwtCredential ->
-        val theToken = this.request.headers["Authorization"]?.removePrefix("Bearer ")
+        val theToken = this.request.headers["Authorization"]?.removePrefix("Bearer")?.trim()
         return@validate onReceivedJwtCallback(theToken)
       }
     }
