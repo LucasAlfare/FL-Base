@@ -70,6 +70,7 @@ data class Env(
  * @property databasePassword Optional password for DB access.
  * @property databasePoolSize Max number of database connections (as a string).
  * @property webServerPort Port number the web server should bind to.
+ * @property jwtAlgorithmSignSecret Jwt secret to be used in jwt authentication token generation.
  */
 object EnvsLoader {
   internal val driverClassName = Env(
@@ -106,6 +107,12 @@ object EnvsLoader {
     name = "WEB_SERVER_PORT",
     defaultWhenNull = Constants.DEFAULT_WEB_SERVER_PORT.toString(),
     defaultWhenEmpty = Constants.DEFAULT_WEB_SERVER_PORT.toString()
+  ).toString()
+
+  internal val jwtAlgorithmSignSecret = Env(
+    name = "JWT_ALGORITHM_SIGN_SECRET",
+    defaultWhenNull = Constants.JWT_ALGORITHM_SIGN_SECRET,
+    defaultWhenEmpty = Constants.JWT_ALGORITHM_SIGN_SECRET
   ).toString()
 
   /**

@@ -2,9 +2,12 @@
 
 package com.lucasalfare.flbase
 
+import com.lucasalfare.flbase.auth.JwtGenerator
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
+import io.ktor.server.auth.*
+import io.ktor.server.auth.jwt.*
 import io.ktor.server.http.content.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.cors.routing.*
@@ -137,6 +140,29 @@ fun Application.configureStaticHtml(
 fun Application.configureRouting(routingCallback: Routing.() -> Unit = {}) {
   routing {
     routingCallback()
+  }
+}
+
+/**
+ * Configures JWT-based authentication for the Ktor application.
+ *
+ * This function installs the [Authentication] feature and sets up JWT authentication using the verifier
+ * provided by [JwtGenerator.verifier]. It also supports a custom token validation callback.
+ *
+ * @param onReceivedJwtCallback A callback function that receives the raw JWT token (if any) extracted
+ * from the "Authorization" header. It should return a [JWTPrincipal] if the token is valid, or null otherwise.
+ */
+fun Application.configureJwtAuth(
+  onReceivedJwtCallback: (receivedToken: String?) -> JWTPrincipal? = { null }
+) {
+  install(Authentication) {
+    jwt {
+      verifier(verifier = JwtGenerator.verifier)
+      validate { jwtCredential ->
+        val theToken = this.request.headers["Authorization"]?.removePrefix("Bearer ")
+        return@validate onReceivedJwtCallback(theToken)
+      }
+    }
   }
 }
 

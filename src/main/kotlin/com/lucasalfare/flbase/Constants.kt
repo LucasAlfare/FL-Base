@@ -42,5 +42,12 @@ class Constants {
      * Port 3000 is the default HTTP port, allowing the application to serve web requests
      */
     const val DEFAULT_WEB_SERVER_PORT = 3000
+
+    /**
+     * Default dummy jwt algorithm secret.
+     */
+    const val JWT_ALGORITHM_SIGN_SECRET = "JWT_ALGORITHM_SIGN_SECRET"
+
+    const val DEFAULT_JWT_EXPIRATION_TIME = 5
   }
 }

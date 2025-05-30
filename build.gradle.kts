@@ -22,11 +22,16 @@ dependencies {
   api(libs.ktor.server.serialization)
   api(libs.ktor.server.cors)
   api(libs.ktor.server.status.pages)
+  api(libs.ktor.server.auth)
+  api(libs.ktor.server.auth.jwt)
 
   // Quick Ktor Client
   api(libs.ktor.client.core)
   api(libs.ktor.client.cio)
   api(libs.ktor.client.content.negotiation)
+
+  // utils
+  api(libs.kotlinx.datetime)
 
   // Cryptography
   api(libs.bcrypt)
