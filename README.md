@@ -16,12 +16,6 @@ TODO
 
 ---
 
-## 📂 Project Structure
-
-TODO
-
----
-
 ## 📜 Dependencies
 This project declares its dependencies using Gradle's **API scope**, making them **transitive**—accessible to any project that includes FL-Base as a dependency.
 
@@ -31,7 +25,9 @@ Check [libs.versions.toml](gradle/libs.versions.toml) to see the full list of de
 
 ## 🚀 Getting Started
 
-TODO
+This project uses the **error throwing pattern**: instead of returning failure results, functions throw exceptions. A middleware (e.g., Ktor’s `StatusPages`) intercepts these and sends appropriate HTTP responses.
+
+As a result, your code only needs to handle successful outcomes. For example, a database query can return an `Entity` directly, not `Result<Entity>`. If a `SomeDatabaseError` occurs, it's automatically handled by the middleware. 
 
 ---
 
