@@ -32,10 +32,10 @@ fun Application.configureStatusPages() {
     exception<Throwable> { call, cause ->
       when (val root = cause.myRootCause()) {
         is AppError -> {
-          applicationRef.log.error("Caught root AppError in server -> $root: ${root.customMessage}")
+          applicationRef.log.error("\nCaught root AppError in server -> $root: ${root.customMessage}\n")
 
           if (root.parent != null) {
-            applicationRef.log.error("AppError parent throwable -> ${root.parent}: ${root.parent.message}")
+            applicationRef.log.error("\nAppError parent throwable -> ${root.parent}: ${root.parent.message}\n")
           }
 
           call.respond(
@@ -45,7 +45,8 @@ fun Application.configureStatusPages() {
         }
 
         else -> {
-          applicationRef.log.error("Unexpected type of error:\n$cause: ${cause.message}")
+          applicationRef.log.error("Unhandled error caught:\n$cause: ${cause.message}")
+          // TODO: avoid responding the real error!
           call.respond(HttpStatusCode.InternalServerError, "$cause: ${cause.message}")
         }
       }
@@ -133,9 +134,7 @@ fun Application.configureStaticHtml(
  * }
  * ```
  */
-fun Application.configureRouting(
-  routingCallback: Routing.() -> Unit = {}
-) {
+fun Application.configureRouting(routingCallback: Routing.() -> Unit = {}) {
   routing {
     routingCallback()
   }
