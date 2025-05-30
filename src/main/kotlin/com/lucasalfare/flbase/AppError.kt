@@ -5,15 +5,15 @@ package com.lucasalfare.flbase
 import io.ktor.http.*
 
 /**
- * Represents a general application error with a custom message and an associated HTTP status.
+ * Base class for application-level exceptions.
  *
- * This is the base class for all application-specific exceptions.
- * It can be used to standardize error handling and response formatting in the application.
+ * Note: [customMessage] is intended for end users of this library,
+ * while [parent] holds the underlying exception that caused the error.
+ * Use [customMessage] to inform users about what happened, and [parent] for internal logging/debugging.
  *
- * By extending [Throwable], this class allows these errors to be thrown and caught like regular exceptions.
- *
- * @property customMessage A message providing more context about the error.
- * @property status The HTTP status code associated with the error. Defaults to [HttpStatusCode.InternalServerError].
+ * @property customMessage Optional human-readable message describing the error.
+ * @property status HTTP status code associated with the error. Defaults to 500 Internal Server Error.
+ * @property parent Optional parent throwable for exception chaining.
  */
 open class AppError(
   val customMessage: String?,
