@@ -2,6 +2,14 @@
 
 package com.lucasalfare.flbase
 
+import com.lucasalfare.flbase.EnvsLoader.databasePassword
+import com.lucasalfare.flbase.EnvsLoader.databasePoolSize
+import com.lucasalfare.flbase.EnvsLoader.databaseUrl
+import com.lucasalfare.flbase.EnvsLoader.databaseUsername
+import com.lucasalfare.flbase.EnvsLoader.driverClassName
+import com.lucasalfare.flbase.EnvsLoader.webServerPort
+
+
 /**
  * Represents a single environment variable, providing optional fallback values or throwing errors based on configuration.
  *
@@ -16,7 +24,7 @@ package com.lucasalfare.flbase
  * @throws NullEnvironmentVariable If `throwWhenNull` is true and the variable is not set.
  * @throws EmptyEnvironmentVariable If `throwWhenEmpty` is true and the variable is empty.
  *
- * @constructor Creates a new [EnvValue] and resolves its value immediately upon initialization.
+ * @constructor Creates a new [Env] and resolves its value immediately upon initialization.
  *
  * @example
  * ```
@@ -24,7 +32,7 @@ package com.lucasalfare.flbase
  * val dbUser = EnvValue("DB_USER", "", "", throwWhenNull = true).toString()
  * ```
  */
-data class EnvValue(
+data class Env(
   private val name: String,
   private val defaultWhenNull: String,
   private val defaultWhenEmpty: String,
@@ -34,14 +42,12 @@ data class EnvValue(
   private val value = System.getenv(name).let {
     if (it == null) {
       if (throwWhenNull)
-        throw NullEnvironmentVariable("Server environment variable [$name] is missing/null")
+        throw AppError("Server environment variable [$name] is missing/null")
       defaultWhenNull
-    } else if (it.isEmpty()) {
+    } else it.ifEmpty {
       if (throwWhenEmpty)
-        throw EmptyEnvironmentVariable("Server environment variable [$name] is missing/empty")
+        throw AppError("Server environment variable [$name] is missing/empty")
       defaultWhenEmpty
-    } else {
-      it
     }
   }
 
@@ -66,19 +72,40 @@ data class EnvValue(
  * @property webServerPort Port number the web server should bind to.
  */
 object EnvsLoader {
-  internal val driverClassName = EnvValue("DB_JDBC_DRIVER", Constants.SQLITE_DRIVER, Constants.SQLITE_DRIVER).toString()
-  internal val databaseUrl = EnvValue("DB_JDBC_URL", Constants.SQLITE_URL, Constants.SQLITE_URL).toString()
-  internal val databaseUsername = EnvValue("DB_USERNAME", "", "").toString()
-  internal val databasePassword = EnvValue("DB_PASSWORD", "", "").toString()
-  internal val databasePoolSize = EnvValue(
-    "DB_POOL_SIZE",
-    Constants.DEFAULT_MAXIMUM_POOL_SIZE.toString(),
-    Constants.DEFAULT_MAXIMUM_POOL_SIZE.toString()
+  internal val driverClassName = Env(
+    name = "DB_JDBC_DRIVER",
+    defaultWhenNull = Constants.SQLITE_DRIVER,
+    defaultWhenEmpty = Constants.SQLITE_DRIVER
   ).toString()
-  internal val webServerPort = EnvValue(
-    "WEB_SERVER_PORT",
-    Constants.DEFAULT_WEB_SERVER_PORT.toString(),
-    Constants.DEFAULT_WEB_SERVER_PORT.toString()
+
+  internal val databaseUrl = Env(
+    name = "DB_JDBC_URL",
+    defaultWhenNull = Constants.SQLITE_URL,
+    defaultWhenEmpty = Constants.SQLITE_URL
+  ).toString()
+
+  internal val databaseUsername = Env(
+    name = "DB_USERNAME",
+    defaultWhenNull = "",
+    defaultWhenEmpty = ""
+  ).toString()
+
+  internal val databasePassword = Env(
+    name = "DB_PASSWORD",
+    defaultWhenNull = "",
+    defaultWhenEmpty = ""
+  ).toString()
+
+  internal val databasePoolSize = Env(
+    name = "DB_POOL_SIZE",
+    defaultWhenNull = Constants.DEFAULT_MAXIMUM_POOL_SIZE.toString(),
+    defaultWhenEmpty = Constants.DEFAULT_MAXIMUM_POOL_SIZE.toString()
+  ).toString()
+
+  internal val webServerPort = Env(
+    name = "WEB_SERVER_PORT",
+    defaultWhenNull = Constants.DEFAULT_WEB_SERVER_PORT.toString(),
+    defaultWhenEmpty = Constants.DEFAULT_WEB_SERVER_PORT.toString()
   ).toString()
 
   /**
@@ -91,13 +118,17 @@ object EnvsLoader {
    * @param throwWhenEmpty If true, throws [EmptyEnvironmentVariable] when the variable is empty.
    * @return The resolved environment variable value as a string.
    */
-  fun customLoad(
+  fun getEnv(
     name: String,
     defaultWhenNull: String,
     defaultWhenEmpty: String,
     throwWhenNull: Boolean = false,
     throwWhenEmpty: Boolean = false
-  ) = EnvValue(
-    name, defaultWhenNull, defaultWhenEmpty, throwWhenNull, throwWhenEmpty
+  ) = Env(
+    name = name,
+    defaultWhenNull = defaultWhenNull,
+    defaultWhenEmpty = defaultWhenEmpty,
+    throwWhenNull = throwWhenNull,
+    throwWhenEmpty = throwWhenEmpty
   ).toString()
 }
