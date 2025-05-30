@@ -75,7 +75,7 @@ object AppDB {
     )
 
     // Open an initial transaction to validate the setup and run the callback
-    transaction(DB) {
+    transaction(db = DB) {
       onFirstTransactionCallback()
     }
   }
@@ -90,7 +90,7 @@ object AppDB {
    * @param queryCodeBlock The suspended code block to be executed within the transaction.
    * @return The result of the query execution.
    */
-  suspend fun <T> exposedQuery(queryCodeBlock: suspend () -> T): T =
+  suspend fun <T> dbTransaction(queryCodeBlock: suspend () -> T): T =
     newSuspendedTransaction(context = Dispatchers.IO, db = DB) {
       queryCodeBlock()
     }
