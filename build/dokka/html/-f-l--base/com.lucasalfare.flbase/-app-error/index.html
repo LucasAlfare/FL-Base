@@ -46,7 +46,7 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-1.0        </div>
+1.1.2        </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
                 <button class="platform-tag platform-selector jvm-like" data-active=""
@@ -108,24 +108,24 @@
   <div class="breadcrumbs"><a href="../../../index.html">FL-Base</a><span class="delimiter">/</span><a href="../index.html">com.lucasalfare.flbase</a><span class="delimiter">/</span><span class="current">AppError</span></div>
   <div class="cover ">
     <h1 class="cover"><span>App</span><wbr></wbr><span><span>Error</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">AppError</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>customMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>status<span class="token operator">: </span><span data-unresolved-link="io.ktor.http/HttpStatusCode///PointingToDeclaration/">HttpStatusCode</span><span class="token operator"> = </span>HttpStatusCode.InternalServerError</span></span><span class="token punctuation">)</span> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a></div><p class="paragraph">Represents a general application error with a custom message and an associated HTTP status.</p><p class="paragraph">This is the base class for all application-specific exceptions. It can be used to standardize error handling and response formatting in the application.</p><p class="paragraph">By extending <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a>, this class allows these errors to be thrown and caught like regular exceptions.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-unavailable-database-service/index.html">UnavailableDatabaseService</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-bad-request/index.html">BadRequest</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-serialization-error/index.html">SerializationError</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-validation-error/index.html">ValidationError</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-null-environment-variable/index.html">NullEnvironmentVariable</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-empty-environment-variable/index.html">EmptyEnvironmentVariable</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">AppError</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>customMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>status<span class="token operator">: </span><span data-unresolved-link="io.ktor.http/HttpStatusCode///PointingToDeclaration/">HttpStatusCode</span><span class="token operator"> = </span>HttpStatusCode.InternalServerError<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>parent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a></div><p class="paragraph">Base class for application-level exceptions.</p><p class="paragraph">Note: <a href="custom-message.html">customMessage</a> is intended for end users of this library, while <a href="parent.html">parent</a> holds the underlying exception that caused the error. Use <a href="custom-message.html">customMessage</a> to inform users about what happened, and <a href="parent.html">parent</a> for internal logging/debugging.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="-75519041%2FConstructors%2F769193423" anchor-label="AppError" id="-75519041%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table"><a data-name="-890743370%2FConstructors%2F769193423" anchor-label="AppError" id="-890743370%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
           <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-app-error.html"><span>App</span><wbr></wbr><span><span>Error</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-75519041%2FConstructors%2F769193423"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-890743370%2FConstructors%2F769193423"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">customMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">status<span class="token operator">: </span><span data-unresolved-link="io.ktor.http/HttpStatusCode///PointingToDeclaration/">HttpStatusCode</span><span class="token operator"> = </span>HttpStatusCode.InternalServerError</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">customMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">status<span class="token operator">: </span><span data-unresolved-link="io.ktor.http/HttpStatusCode///PointingToDeclaration/">HttpStatusCode</span><span class="token operator"> = </span>HttpStatusCode.InternalServerError<span class="token punctuation">, </span></span><span class="parameter ">parent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -138,13 +138,13 @@
           <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-empty-environment-variable/index.html#-654012527%2FProperties%2F769193423"><span><span>cause</span></span></a></div>
+                  <div><a href="index.html#-654012527%2FProperties%2F769193423"><span><span>cause</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-654012527%2FProperties%2F769193423"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-empty-environment-variable/index.html#-654012527%2FProperties%2F769193423">cause</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="index.html#-654012527%2FProperties%2F769193423">cause</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -159,7 +159,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="custom-message.html">customMessage</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">A message providing more context about the error.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="custom-message.html">customMessage</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Optional human-readable message describing the error.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -168,13 +168,28 @@
           <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-empty-environment-variable/index.html#1824300659%2FProperties%2F769193423"><span><span>message</span></span></a></div>
+                  <div><a href="index.html#1824300659%2FProperties%2F769193423"><span><span>message</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1824300659%2FProperties%2F769193423"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-empty-environment-variable/index.html#1824300659%2FProperties%2F769193423">message</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="index.html#1824300659%2FProperties%2F769193423">message</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1581407251%2FProperties%2F769193423" anchor-label="parent" id="-1581407251%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="parent.html"><span><span>parent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1581407251%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="parent.html">parent</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">Optional parent throwable for exception chaining.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -189,7 +204,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="status.html">status</a><span class="token operator">: </span><span data-unresolved-link="io.ktor.http/HttpStatusCode///PointingToDeclaration/">HttpStatusCode</span></div><div class="brief "><p class="paragraph">The HTTP status code associated with the error. Defaults to <span data-unresolved-link="io.ktor.http/HttpStatusCode.Companion/InternalServerError/#/PointingToDeclaration/">HttpStatusCode.InternalServerError</span>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="status.html">status</a><span class="token operator">: </span><span data-unresolved-link="io.ktor.http/HttpStatusCode///PointingToDeclaration/">HttpStatusCode</span></div><div class="brief "><p class="paragraph">HTTP status code associated with the error. Defaults to 500 Internal Server Error.</p></div></div></div>
                 </div>
               </div>
             </div>
