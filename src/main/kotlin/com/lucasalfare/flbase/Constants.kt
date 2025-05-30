@@ -34,15 +34,13 @@ class Constants {
      * If no custom pool size is defined, this default is used to avoid exhausting resources
      * while supporting concurrent operations.
      */
-    const val DEFAULT_MAXIMUM_POOL_SIZE = 6
+    const val DEFAULT_MAXIMUM_POOL_SIZE = 3
 
     /**
      * The default port number used by the embedded web server.
      *
-     * Port 80 is the default HTTP port, allowing the application to serve web requests
-     * without requiring a custom port number in the browser (e.g., http://localhost instead of http://localhost:8080).
-     * Note: On many systems, binding to port 80 may require elevated privileges.
+     * Port 3000 is the default HTTP port, allowing the application to serve web requests
      */
-    const val DEFAULT_WEB_SERVER_PORT = 80
+    const val DEFAULT_WEB_SERVER_PORT = 3000
   }
 }
