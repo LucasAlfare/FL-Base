@@ -153,14 +153,14 @@ fun Application.configureRouting(routingCallback: Routing.() -> Unit = {}) {
  * from the "Authorization" header. It should return a [JWTPrincipal] if the token is valid, or null otherwise.
  */
 fun Application.configureJwtAuth(
-  onReceivedJwtCallback: (receivedToken: String?) -> JWTPrincipal? = { null }
+  onReceivedJwtCallback: (receivedToken: String?, jwtCredential: JWTCredential, applicationCallContext: ApplicationCall) -> JWTPrincipal?
 ) {
   install(Authentication) {
     jwt {
       verifier(verifier = JwtGenerator.verifier)
       validate { jwtCredential ->
         val theToken = this.request.headers["Authorization"]?.removePrefix("Bearer")?.trim()
-        return@validate onReceivedJwtCallback(theToken)
+        return@validate onReceivedJwtCallback(theToken, jwtCredential, this)
       }
     }
   }
