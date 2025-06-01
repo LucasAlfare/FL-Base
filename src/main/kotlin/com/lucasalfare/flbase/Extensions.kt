@@ -167,6 +167,29 @@ fun Application.configureJwtAuth(
 }
 
 /**
+ * Executes the given [onSuccessCallback] if the JWT contains a boolean claim [boolKey] set to true.
+ * Otherwise, throws an [AppError].
+ *
+ * This can be used to enforce access control based on custom JWT claims,
+ * like checking for roles or permissions.
+ *
+ * @param boolKey The name of the boolean claim to validate in the JWT payload.
+ * @param onSuccessCallback A suspendable callback to execute if the claim is present and true.
+ *
+ * @throws AppError if the claim is missing, false, or the JWT is not present.
+ */
+suspend fun RoutingContext.requireJwtBoolClaim(
+  boolKey: String,
+  onSuccessCallback: suspend () -> Unit = {}
+) {
+  val principal = call.principal<JWTPrincipal>()
+  val check = principal?.payload?.getClaim(boolKey)?.asBoolean() ?: false
+
+  if (check) onSuccessCallback()
+  else throw AppError("Not accepted incoming JWT request")
+}
+
+/**
  * Recursively finds the root cause of a [Throwable].
  *
  * This function works similarly to Ktor’s internal `rootCause`, but avoids using Ktor’s

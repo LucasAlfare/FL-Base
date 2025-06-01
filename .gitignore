@@ -2,7 +2,7 @@
 
 .gradle
 build/
-!build/dokka/
+### !build/dokka/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
