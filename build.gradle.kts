@@ -1,8 +1,8 @@
 @file:Suppress("PropertyName", "SpellCheckingInspection")
 
 plugins {
-  alias(libs.plugins.kotlin.jvm)
-  alias(libs.plugins.kotlin.serialization)
+  alias(libs.plugins.kotlinJvm)
+  alias(libs.plugins.kotlinSerialization)
   alias(libs.plugins.dokka)
   `maven-publish`
 }
@@ -15,44 +15,13 @@ repositories {
 }
 
 dependencies {
-  // Ktor Server
-  api(libs.ktor.server.core)
-  api(libs.ktor.server.netty)
-  api(libs.ktor.server.content.negotiation)
-  api(libs.ktor.server.serialization)
-  api(libs.ktor.server.cors)
-  api(libs.ktor.server.status.pages)
-  api(libs.ktor.server.auth)
-  api(libs.ktor.server.auth.jwt)
+  api(libs.bundles.ktorServer)
+  api(libs.bundles.ktorClient)
+  api(libs.bundles.exposed)
+  api(libs.bundles.databases)
+  api(libs.bundles.infra)
 
-  // Quick Ktor Client
-  api(libs.ktor.client.core)
-  api(libs.ktor.client.cio)
-  api(libs.ktor.client.content.negotiation)
-
-  // Cryptography
-  api(libs.bcrypt)
-
-  // Exposed (SQL Framework)
-  api(libs.exposed.core)
-  api(libs.exposed.jdbc)
-  api(libs.exposed.kotlinDateTime)
-
-  // Database Drivers
-  api(libs.h2)
-  api(libs.sqlite)
-  api(libs.postgres)
-
-  // HikariCP (Connection Pool)
-  api(libs.hikaricp)
-
-  // Logging
-  api(libs.logback)
-
-  testApi(libs.ktor.server.test.host)
-
-  // Test
-  testImplementation(libs.kotlin.test)
+  testApi(libs.bundles.testing)
 }
 
 tasks.test {

@@ -9,24 +9,24 @@ hikaricp = "6.2.1"
 logback = "1.5.17"
 
 [plugins]
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version = "2.0.0" }
 
 [libraries]
-ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
-ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
-ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
-ktor-server-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-ktor-server-cors = { module = "io.ktor:ktor-server-cors", version.ref = "ktor" }
-ktor-server-status-pages = { module = "io.ktor:ktor-server-status-pages", version.ref = "ktor" }
-ktor-server-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
-ktor-server-auth-jwt = { module = "io.ktor:ktor-server-auth-jwt", version.ref = "ktor" }
-ktor-server-test-host = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
+ktorServer-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
+ktorServer-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
+ktorServer-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
+ktorServer-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktorServer-cors = { module = "io.ktor:ktor-server-cors", version.ref = "ktor" }
+ktorServer-statusPages = { module = "io.ktor:ktor-server-status-pages", version.ref = "ktor" }
+ktorServer-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
+ktorServer-authJwt = { module = "io.ktor:ktor-server-auth-jwt", version.ref = "ktor" }
+ktorServer-testHost = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 
-ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
-ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
-ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktorClient-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktorClient-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktorClient-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 
 bcrypt = { module = "org.mindrot:jbcrypt", version = "0.4" } # version basically "never" changes
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
@@ -39,4 +39,45 @@ postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
 
 hikaricp = { module = "com.zaxxer:HikariCP", version.ref = "hikaricp" }
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test" }
+kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test" }
+
+[bundles]
+ktorServer = [
+    "ktorServer-core",
+    "ktorServer-netty",
+    "ktorServer-contentNegotiation",
+    "ktorServer-serialization",
+    "ktorServer-cors",
+    "ktorServer-statusPages",
+    "ktorServer-auth",
+    "ktorServer-authJwt"
+]
+
+ktorClient = [
+    "ktorClient-core",
+    "ktorClient-cio",
+    "ktorClient-contentNegotiation"
+]
+
+exposed = [
+    "exposed-core",
+    "exposed-jdbc",
+    "exposed-kotlinDateTime"
+]
+
+databases = [
+    "h2",
+    "sqlite",
+    "postgres"
+]
+
+infra = [
+    "bcrypt",
+    "hikaricp",
+    "logback"
+]
+
+testing = [
+    "ktorServer-testHost",
+    "kotlinTest"
+]
