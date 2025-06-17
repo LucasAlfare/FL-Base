@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.lucasalfare.flbase"
-version = "1.1.2"
+version = "1.2.1"
 
 repositories {
   mavenCentral()
@@ -30,15 +30,13 @@ dependencies {
   api(libs.ktor.client.cio)
   api(libs.ktor.client.content.negotiation)
 
-  // utils
-  api(libs.kotlinx.datetime)
-
   // Cryptography
   api(libs.bcrypt)
 
   // Exposed (SQL Framework)
   api(libs.exposed.core)
   api(libs.exposed.jdbc)
+  api(libs.exposed.kotlinDateTime)
 
   // Database Drivers
   api(libs.h2)
