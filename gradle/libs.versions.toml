@@ -7,11 +7,12 @@ sqlite = "3.49.1.0"
 postgres = "42.7.5"
 hikaricp = "6.2.1"
 logback = "1.5.17"
+dokka = "2.0.0"
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-dokka = { id = "org.jetbrains.dokka", version = "2.0.0" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
 [libraries]
 ktorServer-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
