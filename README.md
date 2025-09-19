@@ -1,6 +1,5 @@
 # 🚀 FL-Base
-
-**A solid and reusable REST API template built with Ktor and Exposed**  
+![](https://jitpack.io/v/LucasAlfare/FL-Base.svg)
 
 FL-Base is a foundational template for quickly bootstrapping REST APIs and backend servers. Since I frequently use this structure, I've centralized it here to streamline access to dependencies, architecture, and best practices.  
 
