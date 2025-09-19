@@ -3,7 +3,7 @@
 
 FL-Base is a foundational template for quickly bootstrapping REST APIs and backend servers. Since I frequently use this structure, I've centralized it here to streamline access to dependencies, architecture, and best practices.
 
-🔹 **Tech stack:**
+**Tech stack:**
 - [Ktor](https://github.com/ktorio/ktor) – Fast and lightweight Kotlin web framework
 - [Exposed](https://github.com/JetBrains/Exposed) – SQL ORM framework for Kotlin
 
