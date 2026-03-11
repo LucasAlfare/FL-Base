@@ -7,10 +7,10 @@ import com.auth0.jwt.exceptions.JWTCreationException
 import com.lucasalfare.flbase.AppError
 import com.lucasalfare.flbase.Constants
 import com.lucasalfare.flbase.EnvsLoader
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
-import kotlinx.datetime.toJavaInstant
+import kotlin.time.Clock
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Instant
+import kotlin.time.toJavaInstant
 
 /**
  * Utility object for generating and verifying JSON Web Tokens (JWT).
@@ -45,6 +45,7 @@ object JwtGenerator {
    * @return A signed JWT string.
    * @throws AppError if token creation fails due to an internal [JWTCreationException].
    */
+  @Suppress("unused")
   fun generate(
     expiresAt: Instant = (Clock.System.now() + Constants.DEFAULT_JWT_EXPIRATION_TIME.minutes),
     vararg claims: Pair<String, String>

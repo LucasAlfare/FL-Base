@@ -6,10 +6,9 @@ import com.lucasalfare.flbase.Constants
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import com.zaxxer.hikari.util.IsolationLevel
-import kotlinx.coroutines.Dispatchers
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
-import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.v1.jdbc.Database
+import org.jetbrains.exposed.v1.jdbc.transactions.suspendTransaction
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 
 /**
  * Object responsible for managing the application's database connection using HikariCP and Exposed.
@@ -91,7 +90,7 @@ object AppDB {
    * @return The result of the query execution.
    */
   suspend fun <T> dbTransaction(queryCodeBlock: suspend () -> T): T =
-    newSuspendedTransaction(context = Dispatchers.IO, db = DB) {
+    suspendTransaction(db = DB) {
       queryCodeBlock()
     }
 

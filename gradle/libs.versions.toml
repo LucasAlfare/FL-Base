@@ -1,12 +1,12 @@
 [versions]
-kotlin = "2.2.20"
-ktor = "3.3.0"
-exposed = "0.61.0"
-h2 = "2.3.232"
-sqlite = "3.49.1.0"
-postgres = "42.7.5"
-hikaricp = "6.2.1"
-logback = "1.5.17"
+kotlin = "2.3.10"
+ktor = "3.4.1"
+exposed = "1.1.1"
+h2 = "2.4.240"
+sqlite = "3.51.2.0"
+postgres = "42.7.10"
+hikaricp = "7.0.2"
+logback = "1.5.32"
 dokka = "2.0.0"
 
 [plugins]
@@ -21,6 +21,7 @@ ktorServer-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiat
 ktorServer-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktorServer-cors = { module = "io.ktor:ktor-server-cors", version.ref = "ktor" }
 ktorServer-statusPages = { module = "io.ktor:ktor-server-status-pages", version.ref = "ktor" }
+ktorServer-call-logging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktor" }
 ktorServer-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
 ktorServer-authJwt = { module = "io.ktor:ktor-server-auth-jwt", version.ref = "ktor" }
 ktorServer-testHost = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
@@ -32,7 +33,7 @@ ktorClient-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiat
 bcrypt = { module = "org.mindrot:jbcrypt", version = "0.4" } # version basically "never" changes
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
-exposed-kotlinDateTime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed"}
+exposed-kotlinDateTime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed" }
 
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
 sqlite = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlite" }
@@ -50,6 +51,7 @@ ktorServer = [
     "ktorServer-serialization",
     "ktorServer-cors",
     "ktorServer-statusPages",
+    "ktorServer-call-logging",
     "ktorServer-auth",
     "ktorServer-authJwt"
 ]
